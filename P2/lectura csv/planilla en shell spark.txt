@@ -1,0 +1,20 @@
+//--------inicio de sesion con sperk para scala----
+import org.apache.spark.sql.SparkSession
+val spark = SparkSession
+  .builder()
+  .master("local[*]")
+  .appName("Spark SQL basic ejemplo")
+  .config("simple-app","some-value")
+  .getOrCreate()
+//----------------------------------------------------
+
+val dataset = spark.read.textFile("/home/andres/Documentos/data.csv")//lectura de archivo csv
+dataset.head()//leer cabecera
+
+val dataframe=dataset.toDF()//verificar tipos de datos
+
+dataframe.printSchema//imprimir
+
+//*************************************************************************************
+
+
